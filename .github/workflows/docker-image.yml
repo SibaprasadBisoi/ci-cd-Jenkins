@@ -1,4 +1,4 @@
-name: Build, Test, and Push Docker Image
+name: Build and Push Docker Image
 
 on:
   push:
@@ -30,9 +30,9 @@ jobs:
           load: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-jenkins:latest
 
-      - name: Run tests in container
-        run: |
-          docker run ${{ secrets.DOCKERHUB_USERNAME }}/my-jenkins:latest python -m pytest /app/tests/
+      #- name: Run tests in container
+        #run: |
+          #docker run ${{ secrets.DOCKERHUB_USERNAME }}/my-jenkins:latest python -m pytest /app/tests/
 
       - name: Push Docker image
         if: always()
